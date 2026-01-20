@@ -1,38 +1,48 @@
-.PHONY: build run clean test install
+.PHONY: all build run clean test install dev help
+
+NAME := devops-lecture
+SRC := src/main.zig
+BUILD_DIR := zig-out/bin
+EXECUTABLE := $(BUILD_DIR)/$(NAME)
 
 # Default target
 all: build
 
 # Build the project
 build:
-	zig build-exe src/main.zig -O ReleaseSafe
+	mkdir -p $(BUILD_DIR)
+	zig build-exe $(SRC) -O ReleaseSafe --name $(NAME)
+	mv $(NAME) $(EXECUTABLE)
 
 # Run the application
 run: build
-	./main
+	$(EXECUTABLE)
 
 # Clean build artifacts
 clean:
-	rm -f main main.o
 	rm -rf zig-cache zig-out
 
 # Run tests
 test:
-	zig test src/main.zig
+	zig test $(SRC)
 
 # Install to a specific prefix (default: /usr/local)
 PREFIX ?= /usr/local
 install: build
 	install -d $(PREFIX)/bin
-	install -m 755 main $(PREFIX)/bin/zig-app
+	install -m 755 $(EXECUTABLE) $(PREFIX)/bin/
 
 # Development build (debug mode)
 dev:
-	zig build-exe src/main.zig -O Debug
+	mkdir -p $(BUILD_DIR)
+	zig build-exe $(SRC) -O Debug --name $(NAME)
+	mv $(NAME) $(EXECUTABLE)
+
 
 # Show help
 help:
 	@echo "Available targets:"
+	@echo "  all      - Build the project (default)"
 	@echo "  build    - Build the project (release safe)"
 	@echo "  run      - Build and run the application"
 	@echo "  clean    - Remove build artifacts"
