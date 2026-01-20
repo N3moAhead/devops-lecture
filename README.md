@@ -3,14 +3,12 @@ banana
 
 A simple "Hello, Friends!" application written in Zig.
 
-This project is configured with a `Makefile` for common tasks and a `flake.nix` for setting up a reproducible development environment.
+This project is configured with a `Makefile` for common tasks.
 
 ## Prerequisites
 
 - [Zig](https://ziglang.org/)
 - [Make](https://www.gnu.org/software/make/)
-
-Alternatively, if you have [Nix](https://nixos.org/) installed with flakes enabled, you can just enter the development environment.
 
 ## Building and Running
 
@@ -24,13 +22,6 @@ Alternatively, if you have [Nix](https://nixos.org/) installed with flakes enabl
   - This will run the tests.
 - **Clean:** `make clean`
   - This will remove build artifacts.
-
-### Using Nix
-
-- **Enter Dev Shell:** `nix develop`
-  - This will drop you into a shell with Zig and Make available.
-- **Build within Nix:** `nix build`
-  - This will build the project and create a `result` symlink to the output in the Nix store.
 
 ## License
 

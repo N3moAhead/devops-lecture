@@ -11,10 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v18
+      - uses: goto-bus-stop/setup-zig@v2
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
+          version: "0.11.0" # Using a recent stable version
       - name: Run Zig tests
-        run: nix develop --command make test
-        env:
-          ZIG_GLOBAL_CACHE_DIR: "${{ github.workspace }}/zig-cache"
+        run: make test
