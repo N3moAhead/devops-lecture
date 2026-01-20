@@ -14,7 +14,7 @@
       {
         packages = {
           default = pkgs.stdenv.mkDerivation {
-            pname = "zig-app";
+            pname = "devops-lecture";
             version = "0.1.0";
 
             src = ./.;
@@ -27,7 +27,7 @@
 
             installPhase = ''
               mkdir -p $out/bin
-              install -m 755 main $out/bin/zig-app
+              install -m 755 zig-out/bin/devops-lecture $out/bin/
             '';
 
             meta = with pkgs.lib; {
