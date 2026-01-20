@@ -1,2 +1,2 @@
-and this is a conflict
+banana
 # devops-lecture
