@@ -5,11 +5,6 @@ main
 main.o
 *.o
 
-# Nix
-result
-result-*
-.direnv/
-
 # Editor files
 .vscode/
 .idea/
