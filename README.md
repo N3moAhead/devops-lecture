@@ -1,3 +1,4 @@
+banana
 # devops-lecture
 
 A simple "Hello, Friends!" application written in Zig.
